@@ -1,0 +1,69 @@
+
+  <svg *ngIf="type=='logo-dark'" id="Group_15043" data-name="Group 15043" xmlns="http://www.w3.org/2000/svg" width="44" height="36" viewBox="0 0 44 36">
+    <g id="Group_15040" data-name="Group 15040" transform="translate(0 0)">
+      <g id="Group_7400" data-name="Group 7400" transform="translate(25.682 21.512)">
+        <path id="Path_7398" data-name="Path 7398" d="M-835.355,896.777v11.828h-15.8v2.66h18.318V896.777Z" transform="translate(851.153 -896.777)" fill="#054736"/>
+      </g>
+      <g id="Group_7403" data-name="Group 7403" transform="translate(25.682)">
+        <g id="Group_7402" data-name="Group 7402" transform="translate(0)">
+          <path id="Path_7399" data-name="Path 7399" d="M-851.153,822.706v2.359h15.8V837.5h2.52V822.706Z" transform="translate(851.153 -822.706)" fill="#054736"/>
+        </g>
+      </g>
+      <g id="Group_7405" data-name="Group 7405" transform="translate(0)">
+        <g id="Group_7404" data-name="Group 7404">
+          <path id="Path_7400" data-name="Path 7400" d="M-939.233,822.706v14.7h2.52V825.136h15.8v-2.43Z" transform="translate(939.233 -822.706)" fill="#054736"/>
+        </g>
+      </g>
+      <g id="Group_7407" data-name="Group 7407" transform="translate(0 21.556)">
+        <g id="Group_7406" data-name="Group 7406" transform="translate(0 0)">
+          <path id="Path_7401" data-name="Path 7401" d="M-936.713,908.73V896.922h-2.52v14.3h18.318V908.73Z" transform="translate(939.233 -896.922)" fill="#054736"/>
+        </g>
+      </g>
+    </g>
+    <g id="Group_15039" data-name="Group 15039" transform="translate(10.73 9.946)">
+      <rect id="Rectangle_466" data-name="Rectangle 466" width="9.02" height="3.221" transform="translate(13.02 0.015)" fill="#054736"/>
+      <rect id="Rectangle_467" data-name="Rectangle 467" width="9.02" height="3.221" transform="translate(13.02 12.9)" fill="#054736"/>
+      <rect id="Rectangle_469" data-name="Rectangle 469" width="3.336" height="16.012" fill="#054736"/>
+      <rect id="Rectangle_470" data-name="Rectangle 470" width="3.221" height="16.107" transform="translate(9.155 0.015)" fill="#054736"/>
+      <g id="Group_15036" data-name="Group 15036" transform="translate(3.279 6.458)">
+        <rect id="Rectangle_468" data-name="Rectangle 468" width="5.876" height="3.221" transform="translate(9.098)" fill="#054736"/>
+        <rect id="Rectangle_471" data-name="Rectangle 471" width="5.876" height="3.221" fill="#054736"/>
+      </g>
+    </g>
+  </svg>
+
+
+<svg *ngIf="type=='logo-white'" id="Component_38_1" data-name="Component 38 – 1" xmlns="http://www.w3.org/2000/svg" width="69" height="57" viewBox="0 0 69 57">
+  <g id="Group_15041" data-name="Group 15041" transform="translate(939.233 -822.707)">
+    <g id="Group_15040" data-name="Group 15040">
+      <g id="Group_7400" data-name="Group 7400" transform="translate(-898.664 857.219)">
+        <path id="Path_7398" data-name="Path 7398" d="M-826.633,896.777v18.358h-24.52v4.129h28.432V896.777Z" transform="translate(851.153 -896.777)" fill="#fff"/>
+      </g>
+      <g id="Group_7403" data-name="Group 7403" transform="translate(-898.664 822.707)">
+        <g id="Group_7402" data-name="Group 7402" transform="translate(0)">
+          <path id="Path_7399" data-name="Path 7399" d="M-851.153,822.706v3.662h24.52v19.293h3.911V822.706Z" transform="translate(851.153 -822.706)" fill="#fff"/>
+        </g>
+      </g>
+      <g id="Group_7405" data-name="Group 7405" transform="translate(-939.233 822.707)">
+        <g id="Group_7404" data-name="Group 7404" transform="translate(0)">
+          <path id="Path_7400" data-name="Path 7400" d="M-939.233,822.706v22.819h3.911V826.478h24.52v-3.771Z" transform="translate(939.233 -822.706)" fill="#fff"/>
+        </g>
+      </g>
+      <g id="Group_7407" data-name="Group 7407" transform="translate(-939.233 857.287)">
+        <g id="Group_7406" data-name="Group 7406" transform="translate(0 0)">
+          <path id="Path_7401" data-name="Path 7401" d="M-935.321,915.249V896.922h-3.911v22.2H-910.8v-3.87Z" transform="translate(939.233 -896.922)" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+    <g id="Group_15039" data-name="Group 15039" transform="translate(3.209 0.023)">
+      <rect id="Rectangle_466" data-name="Rectangle 466" width="14" height="5" transform="translate(-905.233 838.707)" fill="#fff"/>
+      <rect id="Rectangle_467" data-name="Rectangle 467" width="14" height="5" transform="translate(-905.233 858.707)" fill="#fff"/>
+      <rect id="Rectangle_469" data-name="Rectangle 469" width="5.178" height="24.852" transform="translate(-925.442 838.684)" fill="#fff"/>
+      <rect id="Rectangle_470" data-name="Rectangle 470" width="5" height="25" transform="translate(-911.233 838.707)" fill="#fff"/>
+      <g id="Group_15036" data-name="Group 15036" transform="translate(0 2)">
+        <rect id="Rectangle_468" data-name="Rectangle 468" width="9.12" height="5" transform="translate(-906.233 846.707)" fill="#fff"/>
+        <rect id="Rectangle_471" data-name="Rectangle 471" width="9.12" height="5" transform="translate(-920.353 846.707)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+  </svg>

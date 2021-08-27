@@ -1,0 +1,15 @@
+
+    <svg *ngIf="type=='healthev'" id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" width="126" height="36" viewBox="0 0 126 36">
+        <g id="Layer_1" data-name="Layer 1">
+          <text id="HealthEvi" transform="translate(0 28)" fill="#23d9ac" font-size="29" font-family="Goldsmith_Regular, Goldsmith"><tspan x="0" y="0">Health</tspan><tspan y="0" fill="#054736">Evi</tspan></text>
+        </g>
+      </svg>
+
+    <svg *ngIf="type=='healthev-white'" id="Component_39_1" data-name="Component 39 – 1" xmlns="http://www.w3.org/2000/svg" width="212" height="61" viewBox="0 0 212 61">
+      <g id="Layer_2" data-name="Layer 2" transform="translate(0 -0.469)">
+        <g id="Layer_1" data-name="Layer 1" transform="translate(0 0.37)">
+          <text id="HealthEvi" transform="translate(0 47.099)" fill="#fff" font-size="49" font-family="Goldsmith_Regular, Goldsmith"><tspan x="0" y="0">HealthEvi</tspan></text>
+        </g>
+      </g>
+    </svg>
+           

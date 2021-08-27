@@ -1,0 +1,26 @@
+.collection{
+    border: none;
+}
+.collection .collection-item{
+    line-height:inherit;
+    border: none;
+}
+.blue-text.text-lighten-3{
+    position: absolute;
+    right: 0px;
+}
+.dropdown-content li>a i.material-icons, .dropdown-content li>span i.material-icons 
+{ vertical-align: bottom}
+
+.collection-item{
+    width: 33%;
+    display: inline-block;
+    padding:4px;
+}
+.collection-item a{
+    padding:4px;
+    display: block;
+    width:100%;
+    text-align:center;
+    font-weight: bold;
+}

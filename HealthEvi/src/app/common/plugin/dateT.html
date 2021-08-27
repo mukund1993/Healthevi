@@ -1,0 +1,81 @@
+<style>
+    .datepicker-dropdown .datepicker-days {
+        width: 320px;
+    }
+    
+    .datepicker-dropdown-up {
+        bottom: 35px;
+    }
+    </style>
+    <ng-template #validationref>
+            <span class="helper-text red-text ERR2" *ngIf="error">{{error}}</span>
+    </ng-template>
+    <ng-template #Date>
+        <div #DateTable class="modal datepicker-modal datepicker " [ngClass]="{'datepicker-dropdown-up': up == 1}" style=" z-index: 1003; opacity: 1; top: 10%; transform: scaleX(1) scaleY(1);" [ngStyle]="{'display': dS? 'block':'none'}">
+            <div class="modal-content datepicker-container">
+                <div class="datepicker-date-display"><span class="year-text">{{dt.getFullYear()}}</span>
+                    <span class="date-text">{{Days[dt.getDay()]}}, {{dt | date : "MMM dd"}}</span></div>
+                <div class="datepicker-calendar-container datepicker-days">
+                    <table class="date-table">
+                        <thead>
+                            <tr>
+                                <th colspan="2" class="date-prev" style="visibility: visible;"><span class="date-icon" (click)="backyear()"> <i class="material-icons" >first_page</i> </span><span class="date-icon " (click)="backmonth()"> <i class="material-icons" >chevron_left</i> </span></th>
+                                <th colspan="3" class="date-month-year">{{monthNames[dt.getMonth()]}} {{dt.getFullYear()}}
+                                    <select style="width:14px;background-color:transparent;border:0px;float:right;" tabindex="-1" [(ngModel)]="dd" (change)="changeyear(dd)">
+                                        <option *ngFor="let x of numbers" [value]="x">
+                                            {{x}}
+                                        </option>
+                                    </select>
+                                </th>
+                                <th colspan="2" class="date-next" style="visibility: visible;"><span class="date-icon " (click)="nextmonth()"> <i class="material-icons" >chevron_right</i> </span><span class="date-icon " (click)="nextyear()"> <i class="material-icons" >last_page</i> </span></th>
+                            </tr>
+                            <tr>
+                                <th class="date-day calendar">Su</th>
+                                <th class="date-day">Mo</th>
+                                <th class="date-day">Tu</th>
+                                <th class="date-day">We</th>
+                                <th class="date-day">Th</th>
+                                <th class="date-day">Fr</th>
+                                <th class="date-day">Sa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let row of dates">
+                                <td *ngFor="let date of row" class="date">
+                                    <span *ngIf="date && (date <= Maxdate && date >= Mindate)" class="act" (click)="onSelectionDone(date)" [ngClass]="{ 'active-red': getKey3(date, Opendate) }">{{ date.getDate() }}</span>
+                                    <span *ngIf="date && ( date > Maxdate || date < Mindate)" class="dimed" [ngClass]="{ 'active-red': getKey3(date, Opendate) }">{{ date.getDate() }}</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <!-- Created by Mukund Patel  -->
+                    </table>
+                </div>
+                <div class="datepicker-footer">
+                    <button class="btn-flat datepicker-clear waves-effect" style="visibility: hidden;" type="button"></button>
+                    <div class="confirmation-btns">
+                        <!-- <button class="btn-flat datepicker-cancel waves-effect" type="button">Cancel</button> -->
+                        <button class="btn-flat datepicker-done waves-effect" type="button" (click)="dS =0">Close</button>
+                    </div>
+                </div>
+            </div>
+            <div class="TimePick_custom" *ngIf=" DateT=='T'">
+                <table>
+                    <tr>
+                        <th>Time</th>
+                    </tr>
+                    <tr>
+                        <td (click)="T > 8 ? T=T-8: T=T;">&#9650;</td>
+                    </tr>
+                    <ng-container *ngFor="let TS of TimeOptions;let i = index;">
+                        <tr *ngIf=" i >= (T-8) && i < T && i >= timemin && i <= timemax">
+                            <td (click)="TimeSelect(TS)">{{TS}}</td>
+                        </tr>
+                    </ng-container>
+                    <tr>
+                        <td (click)="T < 24 ? T=T+8: T=T;">&#9660;</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="modal-overlay" style="z-index: 1002; display: block; opacity: 0.5;" [ngStyle]="{'display': dS? 'block':'none'}"></div>
+    </ng-template>

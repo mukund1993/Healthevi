@@ -1,0 +1,121 @@
+<form #ADDPRO="ngForm" [ngClass]="{'triedform': ADDPRO.submitted}" (ngSubmit)="submitFuturePlan(ADDPRO)">
+    <!-- (ngSubmit) ="AddInsurance(ADDINS)" -->
+  <main>
+    <div class="container">
+        <h4 class="page-title light-green-text text-darken-2">My Profile</h4>
+    </div>
+    <div class=" light-green darken-2">
+        <div class="">
+            <ul class="tabs light-green darken-2">
+                <li class="tab col s3"><a href="javascript:void(0)" (click)="tab = 1" [ngClass]="{'active':tab == 1}">Documents</a></li>
+                <li class="tab col s3"><a href="javascript:void(0)" (click)="tab = 2" [ngClass]="{'active':tab == 2}">General</a></li>
+                <li class="tab col s3"><a href="javascript:void(0)" (click)="tab = 3" [ngClass]="{'active':tab == 3}">Communication</a></li>
+                <li class="tab col s3 "><a href="javascript:void(0)" (click)="tab = 4" [ngClass]="{'active':tab == 4}">Others</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container" *ngIf="Profile">
+        <div [ngClass]="{'disnone':tab != 1}" class="tab-content">
+            <div class="input-field ">
+                    <input type="text"  [(ngModel)]="Profile.name" name="name" placeholder="Enter Name"  [ERR]="" [pattern]="GL.V_name" >
+                    <label class="active light-green-text text-darken-2" >Name</label>
+            </div>
+            <div class="input-field ">
+              <input type="text" maxlength="50" [DateT]="''" readonly [(ngModel)]="Profile.dob" name="dob" placeholder="Enter Date of Birth" >
+              <label class="active light-green-text text-darken-2">Date of Birth</label>
+          </div>
+
+        </div>
+
+        <fieldset [disabled]="read">
+        <div [ngClass]="{'disnone':tab != 2}" class="tab-content">
+            <div class="input-field ">
+                    <input type="text"  [(ngModel)]="Profile.name" name="name" placeholder="Enter Name"  [ERR]="" [pattern]="GL.V_name" >
+                    <label class="active light-green-text text-darken-2" >Name</label>
+            </div>
+            <div class="input-field ">
+              <input type="text" maxlength="50" [DateT]="''" readonly [(ngModel)]="Profile.dob" name="dob" placeholder="Enter Date of Birth" >
+              <label class="active light-green-text text-darken-2">Date of Birth</label>
+          </div>
+
+            <div class="input-field ">
+                <input [(ngModel)]="Profile.bloodGroup" name="bloodGroup" 
+                required readonly ngDefaultControl  [Mselect]="GL.masterObject.blood" placeholder="Select Blood Group" 
+                [keys]="['k','k']">
+            <!-- <input name="policyHolderName" class="materialize-textarea" type="text" maxlength="50" cols="30" rows="2" placeholder="Enter Relation"  > -->
+            <label class="active light-green-text text-darken-2">Blood Group</label>
+            </div>
+
+            <div class="input-field ">
+              <input type="text" maxlength="50" [DateT]="''" readonly [(ngModel)]="Profile.anniversaryDate" name="anniversaryDate" placeholder="Enter Date of Anniversary" >
+              <label class="active light-green-text text-darken-2">Date of Anniversary </label>
+            </div>
+        </div>
+        <div [ngClass]="{'disnone':tab != 3}" class="tab-content">
+            
+            <div class="input-field ">
+                <input type="text" maxlength="50" [(ngModel)]="Profile.faxNumber" name="faxNumber" placeholder="Enter Fax Number" >
+                <label class="active light-green-text text-darken-2">Fax Number</label>
+            </div>
+  
+            <div class="input-field ">
+                <input type="text" [(ngModel)]="Profile.residenceAddress" name="residenceAddress"  placeholder="Enter Residence Address" >
+                <label class="active light-green-text text-darken-2" >Residence Address</label>
+            </div>
+            
+            <div class="input-field ">
+                <input type="number" [(ngModel)]="Profile.landline" name="landline"  placeholder="Enter Residence Contact Number" >
+                <label class="active light-green-text text-darken-2">Residence Contact Number</label>
+            </div>
+            <div class="input-field ">
+                <input type="text" [(ngModel)]="Profile.officeAddress" name="officeAddress"  placeholder="Enter Office Address" >
+                <label class="active light-green-text text-darken-2" >Office Address</label>
+            </div>
+            <div class="input-field ">
+              <input type="number" [(ngModel)]="Profile.officeNumber" name="officeNumber"  placeholder="Enter Office Contact Number" >
+              <label class="active light-green-text text-darken-2" >Office Contact Number</label>
+            </div>
+           
+        </div>
+        <div [ngClass]="{'disnone':tab != 4}" class="tab-content">
+            
+            <div class="input-field ">
+                <input type="number" [(ngModel)]="Profile.aadharNumber" name="aadharNumber" placeholder="Enter Aadhar Number" >
+                <label class="active light-green-text text-darken-2" >Aadhar Number</label>
+            </div>
+            <div class="input-field ">
+                <input type="number" [(ngModel)]="Profile.drivingLicenseNumber" name="drivingLicenseNumber" placeholder="Enter Driving License Number" >
+                <label class="active light-green-text text-darken-2" >Driving License Number</label>
+            </div>
+            <div class="input-field ">
+                <input type="number" [(ngModel)]="Profile.pan" name="pan" placeholder="Enter PAN" >
+                <label class="active light-green-text text-darken-2" >PAN</label>
+            </div>
+            <div class="input-field ">
+                <input type="number" [(ngModel)]="Profile.passportNumber" name="passportNumber" placeholder="Enter Passport Number" >
+                <label class="active light-green-text text-darken-2" >Passport Number</label>
+            </div>
+            <div class="input-field ">
+                <input type="text" maxlength="50" [DateT]="''" readonly [(ngModel)]="Profile.passportValidity" name="passportValidity" placeholder="Enter Passport Valid Till Date" >
+                <label class="active light-green-text text-darken-2">Passport Valid Till Date </label>
+              </div>
+        </div>
+        </fieldset>
+    </div>
+  </main>
+  <footer class="page-footer white">
+    <div class="">
+        <div class="row">
+            <div class="col m6 offset-m3 s12 l4 offset-l4 light-green darken-2" *ngIf="tab == 1">
+                <button class="waves-effect waves-teal white-text btn-flat btn-block" type="button">Save Documents</button>
+            </div>
+            <div class="col m6 offset-m3 s12 l4 offset-l4 light-green darken-2" *ngIf="tab == 2 || tab == 3">
+                <button class="waves-effect waves-teal white-text btn-flat btn-block" (click)="tab =tab +1" type="button">Save and Continue</button>
+            </div>
+            <div class="col m6 offset-m3 s12 l4 offset-l4 light-green darken-2" *ngIf="tab == 4">
+              <button class="waves-effect waves-teal white-text btn-flat btn-block" type="submit">Save</button>
+          </div>
+        </div>
+    </div>
+  </footer>
+  </form>

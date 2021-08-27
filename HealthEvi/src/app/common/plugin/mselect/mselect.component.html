@@ -1,0 +1,30 @@
+<ng-template #MSELECT>
+
+ 
+ 
+<div *ngIf="Display" class="modal modal-fixed-footer open" style="z-index: 1003; display: block; opacity: 1; top: 10%; transform: scaleX(1) scaleY(1);">
+    <div class="modal-content">
+        <ul (onoutsideclick)="close()" class="dropdown-content select-dropdown" tabindex="0" style="display: block; width: 100%; left: 0px; top: 0px; opacity: 1; ">
+            <li class='disabled' tabindex="0">
+                <span><i class="material-icons grey-text text-lighten-1"></i> {{placeholder}}</span>
+             </li>
+             <ng-container *ngIf="multiple">
+                <li *ngFor="let item of Mselect" [id]="item[keys[0]]" tabindex="0" [ngClass]="{'selected': Mselected.indexOf(item[keys[0]] ) > -1}" (click)="itemClicked(item)">
+                <span><i class="material-icons grey-text text-lighten-1"> {{Mselected.indexOf(item[keys[0]] ) > -1 ? 'check' :'check_box_outline_blank'}}</i> {{item[keys[1]]}}</span>
+                </li>
+            </ng-container>
+            <ng-container *ngIf="!multiple">
+                    <li *ngFor="let item of Mselect" [id]="item[keys[0]]" tabindex="0" [ngClass]="{'selected': Mselected == item[keys[0]]}" (click)="itemClicked(item)">
+                    <span><i class="material-icons grey-text text-lighten-1"> {{Mselected == item[keys[0]] ? 'check' :'check_box_outline_blank'}}</i> {{item[keys[1]]}}</span>
+                    </li>
+            </ng-container>
+        </ul>    
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-blue btn-flat" (click)="Reset()" *ngIf="multiple">Reset</a>
+        <a href="javascript:void(0)" class="modal-close waves-effect waves-blue btn-flat" (click)="Display = 1">Close</a>
+    </div>
+</div>
+<div class="modal-overlay" style="z-index: 1002; opacity: 0.5;" [ngStyle]="{'display': Display? 'block':'none'}"></div>
+</ng-template>
+<ng-content></ng-content> 

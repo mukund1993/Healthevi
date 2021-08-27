@@ -1,0 +1,9 @@
+		<div id="toast-container" style="min-width: 100%;">
+				<ng-template ngFor let-M [ngForOf]="GL.message" let-i="index">
+		<div class="toast" 
+		[ngClass]="{'amber': M.Type == 'W','green': M.Type == 'S','red': M.Type == 'F','cyan': M.Type == 'I' }"
+	 style="top: 0px; margin-top: -40px;">
+		  	<span class="white-text">{{M.Message}}</span>
+		  </div>
+		  </ng-template>
+	  </div>

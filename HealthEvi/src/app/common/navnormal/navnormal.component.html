@@ -1,0 +1,23 @@
+
+<div class="navbar-fixed">
+<nav class="z-depth-0">
+    <div class="nav-wrapper light-green darken-3 "><a href="javascript:void(0)" class="brand-logo center"> 
+        <app-logo-dark-green *ngIf="disableBack" [type]="'logo-dark'"></app-logo-dark-green>
+    </a>
+          
+        <ul id="nav-mobile" class="left ">
+            <li><a *ngIf="disableBack" href="javascript:void(0)" class="white-text" (click)="back()"><i class="material-icons">
+                    keyboard_backspace
+                    </i></a>
+            </li>
+        </ul>
+
+        <ul id="nav-mobile" class="right ">
+            <li><a *ngIf="Left" href="javascript:void(0)" class="white-text" (click)="GL.LeftShow = 1 - GL.LeftShow"><i class="material-icons">
+                menu                    
+                </i></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+</div>

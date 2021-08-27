@@ -1,0 +1,106 @@
+<main>
+  <div class="light-green darken-2" style="padding: 10px;">
+      <h4 class="page-title white-text left" style="margin:2px 0;">My Policy Details </h4>
+      <div class="right white-text">Filter by | {{FilterSelVal}}
+          <span class="btn-tiny btn light-green"> <i class="material-icons " [(ngModel)]="FilterSelVal" (ngModelChange)="setNorecord($event)" ngDefaultControl  [(Mselected)]="FilterSel"  [Mselect]="Filter" placeholder="Select Filter Type" [keys]="['id','label']" >filter_list</i></span>
+        </div>
+      <div style="clear: both;"></div>
+  </div>
+  <div class="row">
+      <ul class="collection custom">
+    <ng-container *ngIf="FilterSel == 0 || FilterSel == 1">  
+        <li class="collection-item avatar" *ngFor="let L of IN.LifeList">
+            <i class="material-icons circle white light-green-text text-lighten-2" (click)="edit('life',L)">edit</i>
+            <span class="title light-green-text text-darken-2">{{L.companyName}}</span>
+            <div class="row">
+                <span class="col s5 grey-text">Premium | Term</span>
+                <span class="col s6 light-green-text text-darken-2">{{L.premiumAmount||'-'}} ₹ | {{L.policyTerm||'-'}}</span>
+                <span class="col s5 grey-text">Policy Detail</span>
+                <span class="col s6 light-green-text text-darken-2">{{L.policyNumber||'-'}}<br>[{{L.planName||'-'}}]</span>
+                
+            </div>
+            <a href="javascript:void(0)" class="secondary-content red-text text-lighten-2" (click)="delete('life',L.id)"><i class="material-icons">delete_forever</i></a>
+        </li>
+    </ng-container>
+    <ng-container *ngIf="FilterSel == 0 || FilterSel == 2">      
+        <li class="collection-item avatar" *ngFor="let L of IN.HealthList">
+            <i class="material-icons circle white light-green-text text-lighten-2" (click)="edit('health',L)">edit</i>
+            <span class="title light-green-text text-darken-2">{{L.companyName}}</span>
+            <div class="row">
+                <span class="col s5 grey-text">Premium | Freq.</span>
+                <span class="col s6 light-green-text text-darken-2">{{L.premiumAmount||'-'}} ₹ | {{L.premiumPaymentFrequency||'-'}}</span>
+                <span class="col s5 grey-text">Policy Detail</span>
+                <span class="col s6 light-green-text text-darken-2">{{L.policyNumber||'-'}}<br>[{{L.planName||'-'}}]</span>
+ 
+            </div>
+            <a href="javascript:void(0)" class="secondary-content red-text text-lighten-2" (click)="delete('health',L.id)"><i class="material-icons">delete_forever</i></a>
+        </li>
+    </ng-container>     
+    <ng-container *ngIf="FilterSel == 0 || FilterSel == 3">       
+        <li class="collection-item avatar" *ngFor="let L of IN.MotorList">
+            <i class="material-icons circle white light-green-text text-lighten-2" (click)="edit('motor',L)">edit</i>
+            <span class="title light-green-text text-darken-2">{{L.carModel||'-'}} [{{L.carCompany||'-'}}]</span>
+            <div class="row">
+                <span class="col s5 grey-text">Premium | Freq.</span>
+                <span class="col s6 light-green-text text-darken-2">{{L.premiumAmount||'-'}} ₹ | {{L.premiumPaymentFrequency||'-'}}</span>
+                <span class="col s5 grey-text">Policy Detail</span>
+                <span class="col s6 light-green-text text-darken-2">{{L.policyNumber||'-'}}<br>[{{L.vehicleRegNumber||'-'}}]</span>
+
+            </div>
+            <a href="javascript:void(0)" class="secondary-content red-text text-lighten-2" (click)="delete('motor',L.id)"><i class="material-icons">delete_forever</i></a>
+        </li>
+    </ng-container>
+    
+    <ng-container *ngIf="FilterSel == 0 || FilterSel == 4">       
+            <li class="collection-item avatar" *ngFor="let L of IN.OtherList">
+                <i class="material-icons circle white light-green-text text-lighten-2" (click)="edit('other',L)">edit</i>
+                <span class="title light-green-text text-darken-2">{{L.productName||'-'}}</span>
+                <div class="row">
+                    <span class="col s5 grey-text">Due Date</span>
+                    <span class="col s6 light-green-text text-darken-2">{{L.dueDate||'-'}}</span>
+                    <span class="col s5 grey-text">Policy Description</span>
+                    <span class="col s6 light-green-text text-darken-2">{{L.description||'-'}}</span>
+    
+                </div>
+                <a href="javascript:void(0)" class="secondary-content red-text text-lighten-2" (click)="delete('other',L.id)"><i class="material-icons">delete_forever</i></a>
+            </li>
+    </ng-container>
+          <li class="collection-item avatar" *ngIf="setNorecord(1)">
+                <div class="card-content">
+                        <p><i class="material-icons" >info</i> No Record added yet.</p> 
+                </div>
+          </li>
+      </ul>
+  </div>
+</main>
+
+<div id="modal1" class="modal bottom-sheet light-green custom open">
+  <div class="modal-content" *ngIf="show">
+      <h6 class="modal-title light-green-text text-darken-2">Choose from the category</h6>
+      <ul class="collection ">
+        <li class="collection-item avatar" *ngFor="let I of LINKS" (click)="Navigate(I[1])">
+          <i class="flaticon-insurance circle light-green-text text-lighten-3"></i>
+          <span class="title white-text">{{I[0]}}</span>
+          <a href="javascript:void(0)" class="secondary-content light-green-text text-lighten-4"><i class="material-icons">chevron_right</i></a>
+      </li>
+      </ul>
+  </div>
+  <div class="modal-footer light-green darken-2">
+      <button class="waves-effect waves-teal white-text btn-flat btn-block" (click)="show = 1 - show">Add Policy Details
+          <i class="material-icons" *ngIf="!show">add_circle_outline</i>
+          <i class="material-icons" *ngIf="show">remove_circle_outline</i>            
+      </button>
+  </div>
+</div>
+<!-- <div class="modal-overlay" style="z-index: 1002; display: block; opacity: 0.5;"></div> -->
+<!-- <footer class="page-footer white">
+  <div class="">
+      <div class="row">
+          <div class="col m6 offset-m3 s12 l4 offset-l4 blue lighten-2">
+              <button class="waves-effect waves-teal white-text btn-flat btn-block" >Add Bank Accounts
+                  <i class="material-icons">add_circle_outline</i>
+              </button>
+          </div>
+      </div>
+  </div>
+</footer> -->

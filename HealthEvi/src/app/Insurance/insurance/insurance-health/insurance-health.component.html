@@ -1,0 +1,110 @@
+<form #ADDINS="ngForm" [ngClass]="{'triedform': ADDINS.submitted}" (ngSubmit)="AddInsurance(ADDINS)">
+    <main>
+        <div class="container">
+            <h4 class="page-title light-green-text text-darken-2">Health Insurance Details</h4>
+        </div>
+        <div class=" light-green darken-2">
+            <div class="container">
+                <ul class="tabs light-green darken-2">
+                    <li class="tab col s3">
+                        <a href="javascript:void(0)" (click)="tab = 1" [ngClass]="{'active':tab == 1}">Policy Details</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a href="javascript:void(0)" (click)="tab = 2" [ngClass]="{'active':tab == 2}">Plan Details</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a href="javascript:void(0)" (click)="tab = 3" [ngClass]="{'active':tab == 3}">Claim Assistance</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div [ngClass]="{'disnone':tab != 1}" class="tab-content">
+
+                <div class="input-field ">
+                    <input [(ngModel)]="IN.HealthIn.companyName" name="companyName" class="materialize-textarea" cols="30" rows="2" placeholder="Enter Insurance Company Name" type="text" maxlength="50"  >
+                    <label class="active light-green-text text-darken-2">Insurance Company Name</label>
+                </div>
+                <div class="input-field ">
+                    <input [(ngModel)]="IN.HealthIn.planName" name="planName" type="text" maxlength="50" placeholder="Enter Plan Name"  >
+                    <label class="active light-green-text text-darken-2">Plan Name</label>
+                </div>
+                <div class="input-field ">
+                    <input type="text" maxlength="50" [(ngModel)]="IN.HealthIn.policyNumber" name="policyNumber" placeholder="Enter Policy Number" [ERR]="" required >
+                    <label class="active light-green-text text-darken-2">Policy Number</label>
+                </div>
+                <div class="input-field ">
+                    <input type="text" maxlength="50" [(ngModel)]="IN.HealthIn.policyHolderName" name="policyHolderName" placeholder="Enter Policy Holder Name"  >
+                    <label class="active light-green-text text-darken-2" Policy>Policy Holder Name</label>
+                </div>
+                <div class="input-field ">
+                    <input type="number" [(ngModel)]="IN.HealthIn.numberOfFamilyMember" name="numberOfFamilyMember" placeholder="Enter No. of Family Members" [ERR]="" [pattern]="GL.V_age" >
+                    <label class="active light-green-text text-darken-2" Policy>Enter No. of Family Members</label>
+                </div>
+
+            </div>
+        </div>
+        <div class="container">
+            <div [ngClass]="{'disnone':tab != 2}" class="tab-content">
+                <div class="input-field ">
+                    <input type="number" [(ngModel)]="IN.HealthIn.sumAssured" name="sumAssured" placeholder="Enter Sum Assured" [ERR]="" [pattern]="GL.V_price" >
+                    <label class="active light-green-text text-darken-2">Sum Assured</label>
+                </div>
+                <div class="input-field ">
+                    <input type="text" maxlength="50" [DateT]="''" readonly [(ngModel)]="IN.HealthIn.policyStartDate" name="policyStartDate" placeholder="Enter Policy Start Date" >
+                    <label class="active light-green-text text-darken-2">Policy Start Date</label>
+                </div>
+
+                <div class="input-field ">
+                    <input type="text" maxlength="50" [DateT]="''" readonly [(ngModel)]="IN.HealthIn.renewDate" name="renewDate" placeholder="Enter Renewal Due Date" >
+                    <label class="active light-green-text text-darken-2">Next Renewal Due Date</label>
+                </div>
+
+                <div class="input-field ">
+                    <input type="text" maxlength="50" [DateT]="''" readonly [(ngModel)]="IN.HealthIn.policyEndDate" name="policyEndDate" placeholder="Enter Policy End Date" >
+                    <label class="active light-green-text text-darken-2">Policy End Date</label>
+                </div>
+                <div class="input-field ">
+                    <input type="number" [(ngModel)]="IN.HealthIn.premiumAmount" name="premiumAmount" placeholder="Enter Premium Amount" [ERR]="" [pattern]="GL.V_price" >
+                    <label class="active light-green-text text-darken-2">Premium Amount</label>
+                </div>
+
+                <div class="input-field ">
+                    <input type="number" [(ngModel)]="IN.HealthIn.premiumPaymentFrequency" name="premiumPaymentFrequency" placeholder="Enter Premium Payment Frequency" [ERR]="" [pattern]="GL.V_age" >
+                    <label class="active light-green-text text-darken-2">Premium Payment Frequency</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div [ngClass]="{'disnone':tab != 3}" class="tab-content">
+                <div class="input-field ">
+                    <input type="number" [(ngModel)]="IN.HealthIn.tpaContactNumber" name="tpaContactNumber" placeholder="Enter TPA Contact Number" [ERR]="" [pattern]="GL.V_mob" >
+                    <label class="active light-green-text text-darken-2">TPA Contact Number</label>
+                </div>
+
+                <div class="input-field ">
+                    <input type="number" [(ngModel)]="IN.HealthIn.advisorContactDetail" name="advisorContactDetail" placeholder="Enter Adviser Contact Number" [ERR]="" [pattern]="GL.V_mob" >
+                    <label class="active light-green-text text-darken-2">Adviser Contact Number</label>
+                </div>
+                <div class="input-field ">
+                    <input type="text" maxlength="50" [(ngModel)]="IN.HealthIn.otherDetail" name="otherDetail" placeholder="Enter Other Detail">
+                    <label class="active light-green-text text-darken-2">Other Detail</label>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <footer class="page-footer white">
+        <div class="">
+            <div class="row">
+                <div class="col m6 offset-m3 s12 l4 offset-l4 light-green darken-2" *ngIf="tab == 1 || tab == 2">
+                    <button class="waves-effect waves-teal white-text btn-flat btn-block" (click)="tab =tab +1" type="button">Save and Continue</button>
+                </div>
+                <div class="col m6 offset-m3 s12 l4 offset-l4 light-green darken-2" *ngIf="tab == 3">
+                    <button class="waves-effect waves-teal white-text btn-flat btn-block" type="submit">Save</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+</form>

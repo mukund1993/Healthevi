@@ -1,0 +1,43 @@
+<form #ADDINS="ngForm" [ngClass]="{'triedform': ADDINS.submitted}" (ngSubmit)="AddInsurance(ADDINS)">
+        <main>
+            <div class="container">
+                <h4 class="page-title light-green-text text-darken-2">Other Insurance Details</h4>
+            </div>
+            <div class=" light-green darken-2">
+                <div class="container">
+                    <ul class="tabs light-green darken-2">
+                        <li class="tab col s3">
+                            <a href="javascript:void(0)" (click)="tab = 1" [ngClass]="{'active':tab == 1}">Other Details</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container">
+                <div *ngIf="tab == 1" class="tab-content">
+
+                    <div class="input-field ">
+                        <input required [(ngModel)]="IN.OtherIn.productName" name="productName" type="text" maxlength="50" placeholder="Enter product Name"  >
+                        <label class="active light-green-text text-darken-2">Product Name</label>
+                    </div>
+        
+                    <div class="input-field ">
+                        <textarea [(ngModel)]="IN.OtherIn.description" name="description" class="materialize-textarea" type="text" maxlength="50" cols="30" rows="2" placeholder="Enter Description"  ></textarea>
+                        <label class="active light-green-text text-darken-2">Description</label>
+                    </div>
+                    <div class="input-field ">
+                        <input [DateT]="''" [(ngModel)]="IN.OtherIn.dueDate" name="dueDate" class="materialize-textarea" type="text" maxlength="50" cols="30" rows="2" placeholder="Enter Due Date"  >
+                        <label class="active light-green-text text-darken-2">Due Date</label>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="page-footer white">
+            <div class="">
+                <div class="row">
+                    <div class="col m6 offset-m3 s12 l4 offset-l4 light-green darken-2">
+                        <button class="waves-effect waves-teal white-text btn-flat btn-block" type="submit">Save</button>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        </form>

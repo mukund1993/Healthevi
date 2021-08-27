@@ -1,0 +1,132 @@
+<div class="container">
+    <h4 class="page-title light-green-text text-darken-2"></h4>
+    <div class="light-blue lighten-2">
+       <div class="row center-align">
+          <button class="col s4 waves-effect waves-blue  btn-flat " [ngClass]="{'active': FormS == 0}" (click) = "FormS = 0">Register</button>
+          <!-- <b class="col m2"> &nbsp;</b> -->
+          <button class="col s4 waves-effect waves-blue  btn-flat " [ngClass]="{'active': FormS == 1}" (click) = "FormS = 1">Login</button>
+          <button class="col s4 waves-effect waves-blue  btn-flat " [ngClass]="{'active': FormS == 2}" (click) = "FormS = 2">SOS</button>
+       </div>
+    </div>
+ </div>
+ <ng-container *ngIf="!FormS">
+    <form #KYCDocuments="ngForm" [ngClass]="{'triedform': KYCDocuments.submitted}" (ngSubmit) ="Register(KYCDocuments)">
+    <main>
+       <div class="container">
+          <h4 class="page-title light-blue-text text-darken-2"></h4>
+          <div class="input-field ">
+             <div >
+                <div #userImg class="user-img circle" style="background-image: url(assets/image/person-placeholder.png)" (click)="upload = 1" (outside.click)="upload = 0">
+                <div *ngIf="upload" class="white circle upload center-align z-depth-1" (click)="openFilemanager(files)" alt="Upload" >
+                <i class="small material-icons blue-text">camera</i>
+             </div>
+          </div>
+          <!-- <img  src="assets/image/coming-soon.png" class="circle responsive-img"  > -->
+          <input #files type="file" visibility='hidden' style="display: none;" (change)="onFileChange($event,'userimg')"> 
+       </div>
+       <p class="ERR2 center-align" *ngIf="!userimgERR">Max File Size: 100 KB. Allowed File Extensions: (jpg, jpeg, png)</p>
+       </div>
+       <div class="input-field ">
+          <input [ERR]='' required placeholder="Placeholder" type="text" type="text" placeholder="Enter Name" [(ngModel)]="user.name" name="name" >
+          <label class="active light-blue-text text-darken-2" for="first_name">Name</label>
+       </div>
+       <div class="input-field">
+          <input [ERR]='' required type="email" type="text" placeholder="Enter Email ID" [(ngModel)]="user.email" name="email" [pattern]="GL.V_email" (change)="getrotp(KYCDocuments)">
+          <label class="active light-blue-text text-darken-2" for="email">Email ID</label>
+          <div class="right-align row" (click)="getrotp(KYCDocuments)"><span class="chip z-depth-1">Get OTP.</span></div>
+       </div>
+       <div class="input-field">
+          <input [ERR]='' required type="text" type="text" placeholder="Enter Mobile Number" [(ngModel)]="user.mobile" name="mobile" [pattern]="GL.V_mob">
+          <label class="active light-blue-text text-darken-2" for="mobile_no">Mobile Number</label>
+       </div>
+       <div class="input-field">
+          <input [ERR]='' class="token" required  placeholder="Enter PIN No" type="number" minlength="0" maxlength="4" [(ngModel)]="user.token" name="token" >
+          <label class="active light-blue-text text-darken-2" for="pin">Create 4 digit security PIN</label>
+       </div>
+       <div class="input-field">
+          <input [ERR]='' required  placeholder="Enter OTP" type="text" minlength="0" maxlength="7" [(ngModel)]="user.otp" name="otp" >
+          <label class="active light-blue-text text-darken-2" for="pin">OTP</label>
+       </div>
+       <div class="input-field" *ngIf="isCustomer == '0'">
+          <input [ERR]='' required  placeholder="Enter Emp Id" type="text" [(ngModel)]="user.empId" name="empId" >
+          <label class="active light-blue-text text-darken-2" for="pin">Add Emp Id to assosiate</label>
+       </div>
+       <div class="input-field">
+          <input placeholder="Enter State" >
+          <label class="active light-blue-text text-darken-2" for="pin">State</label>
+       </div>
+       <div class="input-field textarea">
+          <input placeholder="Enter City" >
+          <label class="active light-blue-text text-darken-2" for="pin">City</label>
+       </div>
+       <div class="input-field textarea">
+          <textarea placeholder="Enter Address" ></textarea>
+          <label class="active light-blue-text text-darken-2" for="pin">Address</label>
+       </div>
+       </div>
+    </main>
+    <footer class="page-footer white">
+       <div class="">
+          <div class="row">
+             <div class="col m6 offset-m3 s12 l4 offset-l4 light-green darken-2">
+                <button class="waves-effect waves-light white-text btn-flat btn-block" type="submit" >Register</button>
+             </div>
+          </div>
+       </div>
+    </footer>
+    </form>
+    <!-- add class "open" and inline style="z-index: 1003; display: block; opacity: 1; bottom: 0; " to open the modal -->
+    <div id="once" class="modal bottom-sheet" [ngClass]="{'open': welcome}">
+       <div class="modal-content center-align">
+          <i class="medium material-icons blue-text">details</i>
+          <h5 class="blue-text">Welcome to Intern Shakti</h5>
+          <p>A safe place to keep all <br>your important financial information</p>
+       </div>
+       <div class="modal-footer blue lighten-2">
+          <a href="javascript:void(0)" (click)="welcome = 0" class=" waves-effect waves-green btn-flat btn-block white-text">Let's Get Started</a>
+       </div>
+    </div>
+    <!-- add inline style="z-index: 1002; display: block; opacity: 0.5;" to show modal overlay -->
+    <div class="modal-overlay" ></div>
+ </ng-container>
+ <ng-container *ngIf="FormS">
+    <form #Login="ngForm" [ngClass]="{'triedform': Login.submitted}" (ngSubmit) ="login(Login,$event)">
+    <main>
+       <div class="container">
+          <h4 class="page-title light-blue-text text-darken-2"></h4>
+          <div class="input-field">
+             <!-- [readonly]="userReadonly" -->
+             <input [ERR]="''" type="text" name="email" placeholder="Enter Email" [(ngModel)]="LoginU.email" [pattern]="GL.V_email" (change)="getlotp(Login);LoginU.mobile = null">
+             <label class="active light-blue-text text-darken-2">Email</label>
+          </div>
+          <div class="active light-blue-text text-darken-2">
+             <label class="active light-blue-text text-darken-2">OR</label> 
+          </div>
+          <div class="input-field">
+             <input [ERR]="''" type="text" name="mobile" placeholder="Enter Mobile" [(ngModel)]="LoginU.mobile" [pattern]="GL.V_mob" (change)="LoginU.email = null" >
+             <label class="active light-blue-text text-darken-2">Mobile</label>
+          </div>
+          <div class="input-field">
+             <input type="number" [ERR]="''" name="token" class="token" placeholder="Enter PIN No" minlength="0" maxlength="4" [(ngModel)]="LoginU.token" >
+             <label class="active light-blue-text text-darken-2">Enter your 4 digit security PIN</label>
+          </div>
+          <div class="input-field" *ngIf="isOTPRequired">
+             <input type="text" [ERR]="''" name="otp" placeholder="Enter OTP" minlength="0" maxlength="7" [(ngModel)]="LoginU.otp" >
+             <label class="active light-blue-text text-darken-2">Enter OTP</label>
+          </div>
+          <div class="input-field">
+             <div class="active text-darken-2 right-align"><a href="javascript:void(0)" (click)="forget(Login)">Forget password?</a></div>
+          </div>
+       </div>
+    </main>
+    <footer class="page-footer white">
+       <div class="">
+          <div class="row">
+             <div class="col m6 offset-m3 s12 l4 offset-l4 light-green darken-2">
+                <button class="waves-effect waves-teal white-text btn-flat btn-block" type="submit" >Go</button>
+             </div>
+          </div>
+       </div>
+    </footer>
+    </form>
+ </ng-container>

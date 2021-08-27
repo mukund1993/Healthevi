@@ -1,0 +1,67 @@
+<form #ADDMEM="ngForm" [ngClass]="{'triedform': ADDMEM.submitted}" (ngSubmit)="AddMemeber(ADDMEM)">
+<main>
+  <div class="light-green darken-2" style="padding: 10px;">
+      <h4 class="page-title white-text left" style="margin:2px 0;">List Employee IDs </h4>
+      <div class="right white-text" >
+          <span class="btn btn-tiny light-green" (click)="state =1 - state"> {{ !state ? 'ADD': 'LIST'}} <i class="material-icons right" >{{ !state ? 'add': 'list'}}</i></span>           
+        </div>
+      <div style="clear: both;"></div>
+  </div>
+
+  <div class="container" *ngIf="state">
+      <div class="tab-content">
+          <div class="input-field ">
+              <input required name="empId" ngModel type="text" maxlength="50" placeholder="Enter Employee ID" [ERR]="" >
+              <label class="active light-green-text text-darken-2">Employee ID</label>
+          </div>
+          <div class="input-field ">
+                <input [(Mselected)]="FilterSel" [(ngModel)]="FilterSelVal" name="role" 
+                required readonly ngDefaultControl  [Mselect]="GL.masterObject.roles" placeholder="Select Role" 
+                [keys]="['k','k']" >
+              <label class="active light-green-text text-darken-2">Role</label>
+              
+          </div>
+      </div>
+  </div>
+  
+  <div class="row" *ngIf="!state">
+      <ul class="collection custom">
+    <ng-container >  
+
+        <li class="collection-item avatar" *ngFor="let L of MemberList">
+            <div class="row">
+                <span class="col s5 grey-text">Role | Emp ID</span>
+                <span class="col s7 light-green-text text-darken-2">{{L.role||'-'}} | {{L.empId||'-'}}</span>
+                <span class="col s5 grey-text">Assigned To</span>
+                <span class="col s7 light-green-text text-darken-2">{{L.assignTo||'-'}}</span>
+                
+            </div>
+            <!-- <a href="javascript:void(0)" class="secondary-content light-green-text text-darken-2" (click)="activate(L)"><i class="material-icons">person_pin_circle</i></a> -->
+        </li>
+    </ng-container>
+          <li class="collection-item avatar" *ngIf=" MemberList && MemberList.length == 0">
+                <div class="card-content">
+                        <p><i class="material-icons" >info</i> No Record Found.</p> 
+                </div>
+          </li>
+      </ul>
+  </div>
+
+
+
+</main>
+
+
+<footer class="page-footer white" *ngIf="state">
+    <div class="">
+        <div class="row">
+            <div class="col m6 offset-m3 s12 l4 offset-l4 light-green darken-2">
+                <button class="waves-effect waves-teal white-text btn-flat btn-block" type="submit">Save</button>
+            </div>
+        </div>
+    </div>
+</footer>
+</form>
+
+
+

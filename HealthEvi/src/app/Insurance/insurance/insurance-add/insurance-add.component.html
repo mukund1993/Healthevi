@@ -1,0 +1,123 @@
+<form #ADDINS="ngForm" [ngClass]="{'triedform': ADDINS.submitted}" (ngSubmit) ="AddInsurance(ADDINS)">
+<main>
+  <div class="container">
+      <h4 class="page-title light-green-text text-darken-2">Life Insurance Details</h4>
+  </div>
+  <div class="light-green darken-2">
+      <div class="container">
+          <ul class="tabs light-green darken-2">
+              <li class="tab col s3"><a href="javascript:void(0)" (click)="tab = 1" [ngClass]="{'active':tab == 1}">Policy Details</a></li>
+              <li class="tab col s3"><a href="javascript:void(0)" (click)="tab = 2" [ngClass]="{'active':tab == 2}">Plan Details</a></li>
+              <li class="tab col s3 "><a href="javascript:void(0)" (click)="tab = 3" [ngClass]="{'active':tab == 3}">Claim Assistance</a></li>
+          </ul>
+      </div>
+  </div>
+  <div class="container">
+      <div [ngClass]="{'disnone':tab != 1}" class="tab-content">
+
+          <div class="input-field ">
+              <input type="text" maxlength="50" name='companyName' [(ngModel)]="IN.LifeIN.companyName" placeholder="Enter Insurance Company Name"  >
+              <label class="active light-green-text text-darken-2" >Insurance Company Name</label>
+          </div>
+          <div class="input-field ">
+              <textarea name="planName" [(ngModel)]="IN.LifeIN.planName" class="materialize-textarea" cols="30" rows="2" placeholder="Enter Plan Name"  ></textarea>
+              <label class="active light-green-text text-darken-2" >Plan Name</label>
+          </div>
+          <div class="input-field ">
+                <input [(Mselected)]="FilterSel" [(ngModel)]="IN.LifeIN.productType" name="productType" 
+                required readonly ngDefaultControl  [Mselect]="GL.masterObject.productType" placeholder="Select Product Type" 
+                [keys]="['k','k']">
+            <label class="active light-green-text text-darken-2" >Product Type</label>
+          </div>
+
+          <div class="input-field ">
+              <input type="text" maxlength="50"  name="policyNumber" [(ngModel)]="IN.LifeIN.policyNumber" placeholder="Enter Policy Number"  [ERR]="" required>
+              <label class="active light-green-text text-darken-2" >Policy Number</label>
+          </div>
+
+          <div class="input-field ">
+              <input type="text" maxlength="50" name="policyHolderName" [(ngModel)]="IN.LifeIN.policyHolderName" placeholder="Enter Policy Holder Name"   >
+              <label class="active light-green-text text-darken-2" >Policy Holder Name</label>
+          </div>
+          <div class="input-field ">
+              <input type="text" maxlength="50" name="nomineeName" [(ngModel)]="IN.LifeIN.nomineeName" placeholder="Enter Nominee Name"   >
+              <label class="active light-green-text text-darken-2" >Nominee Name</label>
+          </div>
+          <div class="input-field ">
+              <input type="number"  name="sumAssured" [(ngModel)]="IN.LifeIN.sumAssured" placeholder="Enter Sum Assured"  [ERR]="" [pattern]="GL.V_price" >
+              <label class="active light-green-text text-darken-2" >Sum Assured</label>
+          </div>
+      </div>
+      <div [ngClass]="{'disnone':tab != 2}" class="tab-content">
+          <div class="input-field ">
+              <input type="text" maxlength="50" [DateT]="''" readonly name="policyStartDate" [(ngModel)]="IN.LifeIN.policyStartDate" placeholder="Enter Policy Start Date" >
+              <label class="active light-green-text text-darken-2">Policy Start Date</label>
+          </div>
+          <div class="input-field ">
+            <input type="text" maxlength="50" [DateT]="''" readonly name="lastPaidDate" [(ngModel)]="IN.LifeIN.lastPaidDate" placeholder="Enter Last Paid Date" >
+            <label class="active light-green-text text-darken-2">Last Paid Date</label>
+          </div>
+          <div class="input-field ">
+              <input type="text" maxlength="50" [DateT]="''" readonly name="policyEndDate" [(ngModel)]="IN.LifeIN.policyEndDate" placeholder="Enter Policy Maturity Date" >
+              <label class="active light-green-text text-darken-2">Policy Maturity Date</label>
+          </div>
+          
+          <div class="input-field ">
+              <input type="number" name="policyTerm" [(ngModel)]="IN.LifeIN.policyTerm" placeholder="Enter Policy Term"  [ERR]="" [pattern]="GL.V_age" >
+              <label class="active light-green-text text-darken-2" >Policy Term (in Years) </label>
+          </div>
+
+          <div class="input-field ">
+              <input type="number" name="premiumPaymentTerm" [(ngModel)]="IN.LifeIN.premiumPaymentTerm"  placeholder="Enter Premium Payment Term"  [ERR]="" [pattern]="GL.V_age" >
+              <label class="active light-green-text text-darken-2" >Premium Payment Term (in years)</label>
+          </div>
+
+          <div class="input-field ">
+            <input type="number" name="maturityAmount" [(ngModel)]="IN.LifeIN.maturityAmount"  placeholder="Enter Maturity Amount"  [ERR]="" [pattern]="GL.V_price" >
+            <label class="active light-green-text text-darken-2">Maturity Amount</label>
+          </div>
+          <div class="input-field ">
+              <input type="number" name="premiumAmount" [(ngModel)]="IN.LifeIN.premiumAmount"  placeholder="Enter Premium Amount"  [ERR]="" [pattern]="GL.V_price" >
+              <label class="active light-green-text text-darken-2">Premium Amount</label>
+          </div>
+          
+          <div class="input-field ">
+              <input type="number" name="premiumPaymentFrequency" [(ngModel)]="IN.LifeIN.premiumPaymentFrequency"  placeholder="Enter Premium Payment Frequency"  [ERR]="" [pattern]="GL.V_age" >
+              <label class="active light-green-text text-darken-2" >Premium Payment Frequency</label>
+          </div>
+
+          <div class="input-field ">
+              <input type="text" maxlength="50" [DateT]="''" readonly name="renewDate" [(ngModel)]="IN.LifeIN.renewDate"  placeholder="Enter Next Renewal Due Date"  >
+              <label class="active light-green-text text-darken-2" >Next Renewal Due Date</label>
+          </div>
+
+      </div>
+      <div [ngClass]="{'disnone':tab != 3}" class="tab-content">
+        <!-- <div class="input-field">
+              <input type="text" maxlength="50" name="applicationUser" [(ngModel)]="IN.LifeIN.applicationUser" placeholder="Enter Application User">
+              <label class="active light-green-text text-darken-2">Application User</label>
+          </div> -->
+          <div class="input-field ">
+              <input type="number" name="advisorContactDetail" [(ngModel)]="IN.LifeIN.advisorContactDetail" placeholder="Enter Adviser Contact Number"  [ERR]="" [pattern]="GL.V_mob" >
+              <label class="active light-green-text text-darken-2" >Adviser Contact Number</label>
+          </div>
+          <div class="input-field ">
+              <input type="text" maxlength="50" name="otherDetail" [(ngModel)]="IN.LifeIN.otherDetail" placeholder="Enter Other Details" >
+              <label class="active light-green-text text-darken-2">Other Details</label>
+          </div>
+      </div>
+  </div>
+</main>
+<footer class="page-footer white">
+  <div class="">
+      <div class="row">
+          <div class="col m6 offset-m3 s12 l4 offset-l4 light-green darken-2" *ngIf="tab == 1 || tab == 2">
+              <button class="waves-effect waves-teal white-text btn-flat btn-block" (click)="tab =tab +1" type="button">Save and Continue</button>
+          </div>
+          <div class="col m6 offset-m3 s12 l4 offset-l4 light-green darken-2" *ngIf="tab == 3">
+            <button class="waves-effect waves-teal white-text btn-flat btn-block" type="submit">Save</button>
+        </div>
+      </div>
+  </div>
+</footer>
+</form>

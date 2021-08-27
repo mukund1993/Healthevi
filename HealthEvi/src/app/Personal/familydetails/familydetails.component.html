@@ -1,0 +1,72 @@
+<main>
+    <div class="light-green darken-2" style="padding: 10px;">
+        <h4 class="page-title white-text left" style="margin:2px 0;">Family Details </h4>
+        <div class="right white-text">
+            <span class="btn btn-tiny light-green" *ngIf="row != 1" (click)="row = 1"> List <i class="material-icons right">list</i> </span> 
+            <span class="btn btn-tiny light-green" *ngIf="row != 0" (click)="row = 0;add()"> Add <i class="material-icons right">add</i> </span>
+             
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    <div class="row" *ngIf="row == 1">
+        <ul class="collection custom">
+
+
+
+            
+      <ng-container *ngIf=" FamilyList.familyDetails.length">  
+           <li class="collection-item avatar" *ngFor="let L of FamilyList.familyDetails; let i = index">
+              <i class="material-icons circle white light-green-text text-lighten-2" (click)="edit(L)">edit</i>
+              <span class="title light-green-text text-darken-2">{{L.name}}</span>
+              <p class=" grey-text">{{L.relationship}} | 'DOB' : [{{L.dob ||'-'}}]</p>
+              <a href="javascript:void(0)" class="secondary-content red-text text-darken-2" (click)="delete(i)"><i class="material-icons">delete_forever</i></a>
+          </li> 
+          </ng-container>
+            <li class="collection-item avatar" *ngIf=" FamilyList.familyDetails.length ==0 ">
+                  <div class="card-content">
+                          <p><i class="material-icons" >info</i> No Record added yet.</p> 
+                  </div>
+            </li>
+        </ul>
+    </div>
+    <div class="row" *ngIf="row == 0">
+        <form #ADDINS="ngForm" [ngClass]="{'triedform': ADDINS.submitted}" (ngSubmit)="submitFuturePlan(ADDINS)">
+            <main>
+                <div class="container">
+                    <div class="tab-content">
+                        <div class="input-field ">
+                            <input name="name" type="text" maxlength="50" [(ngModel)]="Family.name" placeholder="Enter Name" required [ERR]="''" >
+                            <label class="active light-green-text text-darken-2">Name</label>
+                        </div>
+            
+                        <div class="input-field ">
+                                <input [(Mselected)]="FilterSel" [(ngModel)]="Family.relationship" name="relationship" 
+                                required readonly ngDefaultControl  [Mselect]="GL.masterObject.relatioship" placeholder="Select Relation" 
+                                [keys]="['k','k']">
+                            <!-- <input name="policyHolderName" class="materialize-textarea" type="text" maxlength="50" cols="30" rows="2" placeholder="Enter Relation"  > -->
+                            <label class="active light-green-text text-darken-2">Relation</label>
+                        </div>
+                        
+                        <div class="input-field ">
+                                <input name="dob" type="text" maxlength="50" [(ngModel)]="Family.dob" [DateT]="''" readonly placeholder="Enter Date of Birth" >
+                                <label class="active light-green-text text-darken-2">Date of Birth</label>
+                        </div>    
+                    </div>
+                </div>
+            </main>
+            <footer class="page-footer white">
+                <div class="">
+                    <div class="row">
+                        <div class="col m6 offset-m3 s12 l4 offset-l4 light-green darken-2">
+                            <button class="waves-effect waves-teal white-text btn-flat btn-block" type="submit">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            </form>
+    </div>
+  </main>
+  
+
+
+  

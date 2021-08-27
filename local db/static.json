@@ -1,0 +1,9 @@
+{
+    "masterData":
+{"productType": [{"k":"Life Insurance"},{"k":"Motor Insurance"},{"k":"Health Insurance"},{"k":"Other Insurance"}],
+"relatioship": [{"k":"Mother"},{"k":"Father"},{"k":"Brother"},{"k":"Wife"}],
+"quickReferences": [{"k":"Doctor"},{"k":"Advocate"},{"k":"Insurance Agent"}],
+"roles": [{"k":"A"},{"k":"AB"},{"k":"B"},{"k":"O"}],
+"blood": [{"k":"A"},{"k":"AB"},{"k":"B"},{"k":"O"}]
+}
+}

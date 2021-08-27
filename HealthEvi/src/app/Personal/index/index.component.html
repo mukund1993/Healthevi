@@ -1,0 +1,32 @@
+<main>
+    <router-outlet  name="inner"></router-outlet>
+    <ul id="slide-out" class="sidenav" [ngClass]="{'sidenav-open':GL.LeftShow}">
+        <li><div class="user-view">
+          <div class="background">
+            <img src="assets/image/menu-bg.jpg">
+          </div>
+        <div  class=" ">
+        <a href="javascript:void(0)" class="col s4">
+          <img class="responsive-img" src="assets/image/logo.png">
+        </a>
+        <a routerLink="/index" class="col s8">  
+          <span class="white-text name">{{ GL.user.name}}</span>
+          <span class="white-text email">{{ GL.user.email}}</span>
+        </a>
+      </div>
+        </div></li>
+        
+        <li *ngFor="let B of LINKS" (click)="Navigate(B[1])">
+              <a href="javascript:void(0)" class="waves-effect light-green-text text-darken-2">
+              <i class="material-icons light-green-text text-lighten-2">{{B[2]}}</i>{{B[0]}}</a>
+        </li>
+
+        <li *ngIf="this.GL.user.role == 'ROLE_ADMIN' || this.GL.user.role == 'ROLE_EMPLOYEE'" (click)="Navigate('index/(inner:Personal/members)')"><a class="waves-effect light-green-text text-darken-2" href="javascript:void(0)">
+            <i class="material-icons light-green-text text-lighten-2">view_list</i>Members</a>
+          </li>
+        <li (click)="Logout()"><a class="waves-effect light-green-text text-darken-2" href="javascript:void(0)" >
+          <i class="material-icons light-green-text text-lighten-2">exit_to_app</i>Logout</a>
+        </li>
+    </ul>
+    <div [ngClass]="{'sidenav-overlay':GL.LeftShow}" (click)="GL.LeftShow = 1- GL.LeftShow"></div>
+</main>

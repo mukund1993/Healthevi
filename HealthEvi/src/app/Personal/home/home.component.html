@@ -1,0 +1,85 @@
+<div class="row detail">
+    <div class="row">
+        <div class="col s4 push-s4">
+                <img [(src)]="PS.image" class="circle responsive-img" alt="">
+            <div >
+                <div >
+
+                        <div class=" center-align z-depth-1" (click)="openFilemanager(files)" alt="Upload" >
+                            <i class="small material-icons light-green-text text-darken-2">camera</i>
+                        </div>
+                    
+                    <input #files type="file" visibility='hidden' style="display: none;" (change)=" onFileChange($event,'userimg')"> 
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="row">
+    <p class="ERR2 center-align" *ngIf="!userimgERR">Max File Size: 100 KB. Allowed Extensions: (jpg, jpeg, png)</p>
+    </div>
+    <div class="col s10 push-s1 center-align">
+        <h4 class="page-title light-green-text text-darken-2">{{GL.user.name}}</h4>
+        <p class="grey-text text-darken-1">{{GL.user.mobile}}</p>
+        <ng-container *ngIf="GL.MembersList">
+        
+            <p class="black-text" (click)="open()" ><i>Select active user</i></p>
+            <p class="blue-text" *ngIf="Mselected"> {{Mselected.name || Mselected.email}}</p>
+        </ng-container>
+    </div>
+    
+
+</div>
+<div class="">
+    <ul class="collection dashboard">
+        <li class="collection-item" *ngFor="let I of Mod" (click)="Navigate(I.Link)">
+            
+            <a href="javascript:void(0)" class="center-align z-depth-1 secondary-content white-text ">
+                <i class="circle blue-text small material-icons" [ngClass]="I.icon">{{I.icon}}</i>
+                <br>
+            <span class="title blue-text">{{I.label}}</span>
+        
+
+            </a>
+            
+        </li>
+    </ul>
+</div>
+<!-- <div class="container">
+    <h4 class="page-title blue-text text-lighten-2">Notifications</h4>
+</div> -->
+  <div class="row notification">
+      <div class="col s2"><i class="material-icons light-green-text text-darken-2">chevron_left</i></div>
+      <div class="col s8">
+          <div class="notice light-green-text ">
+              <p>No Pending Notifications</p>
+          </div></div>
+      <div class="col s2"><i class="material-icons light-green-text text-darken-2">chevron_right</i></div>
+  </div>
+
+  <!-- [(ngModel)]="activeUserVal" (itemChange)="setActiveUser($event)"  [(Mselected)]="activeUser"  [Mselect]=""  [keys]="['id','assignTo']" -->
+        <div *ngIf="DisplayM" class="modal modal-fixed-footer open" style="z-index: 1003; display: block; opacity: 1; top: 10%; transform: scaleX(1) scaleY(1);">
+            <div class="modal-content">
+                <ul (outside.click)="DisplayM = 0" class="dropdown-content select-dropdown" tabindex="0" style="display: block; width: 100%; left: 0px; top: 0px; opacity: 1; ">
+                    <!-- <li class='disabled' tabindex="0">
+                        <span class="light-green lighten-2 light-green-text text-darken-4">Select Member</span>
+                     </li> -->
+                     <ng-container >
+                        <li *ngFor="let item of GL.MembersList" tabindex="0" 
+                        [ngClass]="{'selected': Mselected == item['id'].toString() }" (click)="Mselected = item;setActiveUser(item)">
+                            <span class="light-green-text text-darken-2">
+                                <a class="right role blue-text text-lighten-2" href="javascript:void(0)">{{item['role'] == "ROLE_ADMIN" ? 'Admin' : item['role'] == "ROLE_EMPLOYEE" ? 'Employee' : 'Customer'}}</a>
+                                {{item['name']}} <br>[ {{item['mobile']}} ]    
+                            </span>
+                        </li>
+                    </ng-container>
+                </ul>    
+            </div>
+            <div class="modal-footer">
+                <!-- <a href="javascript:void(0)" class="modal-close waves-effect waves-blue btn-flat" (click)="Reset()" *ngIf="multiple">Reset</a> -->
+                <a href="javascript:void(0)" class="modal-close waves-effect waves-light btn-flat" (click)="DisplayM = 1">Close</a>
+            </div>
+        </div>
+        <div class="modal-overlay" style="z-index: 1002; opacity: 0.5;" [ngStyle]="{'display': DisplayM? 'block':'none'}"></div>
+        

@@ -1,0 +1,26 @@
+<form #CHANGE="ngForm" [ngClass]="{'triedform': CHANGE.submitted}" (ngSubmit)="ChangePin(CHANGE)">
+    <main>
+        <div class="container">
+            <div  class="tab-content">
+                <div class="input-field ">
+                    <input [(ngModel)]="USER.email" name="email" type="text" placeholder="Email" >
+                    <label class="active light-green-text text-darken-2">Email</label>
+                </div>
+    
+                <div class="input-field ">
+                    <input [(ngModel)]="USER.token" [ngClass]="{'token' : type == 1}" name="token" type="number"  placeholder="Enter New Password" [ERR]="" [pattern]="GL.V_pass" required minlength="0" maxlength="4">
+                    <label class="active light-green-text text-darken-2">New Password <span class="material-icons red-text text-lighten-2" (click)="type = 1-type">remove_red_eye</span></label>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="page-footer white">
+        <div >
+            <div class="row">
+                <div class="col m6 offset-m3 s12 l4 offset-l4 light-green darken-2">
+                    <button class="waves-effect waves-teal white-text btn-flat btn-block" type="submit">Save</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </form>

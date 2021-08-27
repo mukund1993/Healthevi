@@ -1,0 +1,31 @@
+<form #Forget="ngForm" [ngClass]="{'triedform': Forget.submitted}" (ngSubmit) ="resettoken(Forget)">
+<main>
+  <div class="container">
+      <h4 class="page-title light-green-text text-darken-2"></h4>
+      
+      <div class="input-field ">
+        <input type="text" placeholder="Enter Email" [(ngModel)]="forget.email" name="email">
+        <label class="active light-green-text text-darken-2" for="first_name">Email</label>
+        <div class="right-align row" (click)="getfotp(Forget)"><span class="chip z-depth-1">Get OTP.</span></div>
+      </div>
+      <div class="input-field ">
+        <input [ERR]='' required type="text" placeholder="Enter OTP"  [(ngModel)]="forget.otp" name="otp" >
+        <label class="active light-green-text text-darken-2" for="first_name">OTP</label>
+      </div>
+      <div class="input-field ">
+          <input type="number" [ERR]="''" name="token" class="token" placeholder="Enter PIN No" minlength="0" maxlength="4" [(ngModel)]="forget.token" >
+          <label class="active light-green-text text-darken-2" for="first_name">Enter your 4 digit security PIN</label>
+    </div>
+
+  </div>
+  </main>
+  <footer class="page-footer white">
+    <div class="">
+        <div class="row">
+            <div class="col m6 offset-m3 s12 l4 offset-l4 light-green darken-2">
+                <button class="waves-effect waves-teal white-text btn-flat btn-block" type="submit" >Reset</button>
+            </div>
+        </div>
+    </div>
+    </footer>
+</form>

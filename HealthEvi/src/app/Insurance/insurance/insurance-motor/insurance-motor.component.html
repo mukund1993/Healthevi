@@ -1,0 +1,121 @@
+<form #ADDINS="ngForm" [ngClass]="{'triedform': ADDINS.submitted}" (ngSubmit)="AddInsurance(ADDINS)">
+<main>
+    <div class="container">
+        <h4 class="page-title light-green-text text-darken-2">Motor Insurance Details</h4>
+    </div>
+    <div class=" light-green darken-2">
+        <div class="container">
+            <ul class="tabs light-green darken-2">
+                <li class="tab col s3">
+                    <a href="javascript:void(0)" (click)="tab = 1" [ngClass]="{'active':tab == 1}">Policy Details</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div *ngIf="tab == 1" class="tab-content">
+            <div class="input-field ">
+                <input [(ngModel)]="IN.MotorIn.vehicleRegNumber" name="vehicleRegNumber" type="text" maxlength="50" placeholder="Enter Vehicle Registration Number"  >
+                <label class="active light-green-text text-darken-2">Vehicle Registration Number</label>
+            </div>
+
+            <div class="input-field ">
+                <input [(ngModel)]="IN.MotorIn.policyHolderName" name="policyHolderName" class="materialize-textarea" type="text" maxlength="50" cols="30" rows="2" placeholder="Enter Policy Holder Name"  >
+                <label class="active light-green-text text-darken-2">Policy Holder Name</label>
+            </div>
+            <div class="input-field ">
+                <input [(ngModel)]="IN.MotorIn.companyName" name="companyName" class="materialize-textarea" type="text" maxlength="50" cols="30" rows="2" placeholder="Enter Company Name"  >
+                <label class="active light-green-text text-darken-2">Company Name</label>
+            </div>
+            <div class="input-field ">
+                <input [(ngModel)]="IN.MotorIn.carCompany" name="carCompany" class="materialize-textarea" type="text" maxlength="50" cols="30" rows="2" placeholder="Enter Car Company"  >
+                <label class="active light-green-text text-darken-2">Car Company</label>
+            </div>
+            <div class="input-field ">
+                <input [(ngModel)]="IN.MotorIn.carModel" name="carModel" type="text" maxlength="50" placeholder="Enter Model" [ERR]="" >
+                <label class="active light-green-text text-darken-2">Model</label>
+            </div>
+            <div class="input-field ">
+                <input [(ngModel)]="IN.MotorIn.policyNumber" name="policyNumber" type="text" maxlength="50" placeholder="Enter Policy Number" [ERR]="" required>
+                <label class="active light-green-text text-darken-2">Policy Number</label>
+            </div>
+            <div class="input-field ">
+                <input [(ngModel)]="IN.MotorIn.insuredDeclaredValue" name="insuredDeclaredValue" type="number" placeholder="Enter Insured Declared Value" [ERR]="" [pattern]="GL.V_price" >
+                <label class="active light-green-text text-darken-2">Insured Declared Value</label>
+            </div>
+
+            <div class="input-field ">
+                <div class="toggle-switch">
+                    <div class="quality">
+                        <input id="debit1" [(ngModel)]="IN.MotorIn.typeOfCover" name="typeOfCover" type="radio" value="Third Party Only">
+                        <label for="debit1">Third Party Only</label>
+                    </div>
+                    <div class="quality">
+                        <input id="debit2" [(ngModel)]="IN.MotorIn.typeOfCover" name="typeOfCover" type="radio" value="Comprehensiv">
+                        <label for="debit2">Comprehensiv</label>
+                    </div>
+                </div>
+                <label class="active light-green-text text-darken-2" for="ac_holder">Type of Cover</label>
+            </div>
+            <div class="input-field ">
+                <input [(ngModel)]="IN.MotorIn.policyStartDate" name="policyStartDate" type="text" maxlength="50" [DateT]="''" readonly placeholder="Enter Policy Start Date" >
+                <label class="active light-green-text text-darken-2">Policy Start Date</label>
+            </div>
+
+            <div class="input-field ">
+                <input [(ngModel)]="IN.MotorIn.premiumAmount" name="premiumAmount" type="number" placeholder="Enter Premium Amount" [ERR]="" [pattern]="GL.V_price" >
+                <label class="active light-green-text text-darken-2">Premium Amount</label>
+            </div>
+
+            <div class="input-field ">
+                <input [(ngModel)]="IN.MotorIn.renewDate" name="renewDate" type="text" maxlength="50" [DateT]="''" readonly placeholder="Enter Next Renewal Due Date" >
+                <label class="active light-green-text text-darken-2">Next Renewal Due Date</label>
+            </div>
+
+            <div class="input-field ">
+                <div class="toggle-switch">
+                    <div class="quality">
+                        <input id="debit12" [(ngModel)]="IN.MotorIn.noClaimBonusEligble" name="noClaimBonusEligble" type="radio" value=true>
+                        <label for="debit12">Yes</label>
+                    </div>
+                    <div class="quality">
+                        <input id="debit23" [(ngModel)]="IN.MotorIn.noClaimBonusEligble" name="noClaimBonusEligble" type="radio" value=false>
+                        <label for="debit23">No</label>
+                    </div>
+                </div>
+                <label class="active light-green-text text-darken-2" for="ac_holder">Is Claim Bonus Eligible(Yes/No)</label>
+            </div>
+
+            <div class="input-field ">
+                <input [(ngModel)]="IN.MotorIn.premiumPaymentFrequency" name="premiumPaymentFrequency" type="number" placeholder="Enter Premium Payment Frequency" [ERR]="" [pattern]="GL.V_age" >
+                <label class="active light-green-text text-darken-2">Premium Payment Frequency</label>
+            </div>
+
+            <div class="input-field ">
+                <input [(ngModel)]="IN.MotorIn.advisorContactDetail" name="advisorContactDetail" type="number" placeholder="Enter Adviser Help Desk Number" [ERR]="" [pattern]="GL.V_num" >
+                <label class="active light-green-text text-darken-2">Adviser Help Desk Number</label>
+            </div>
+
+            <div class="input-field ">
+                <input [(ngModel)]="IN.MotorIn.policyEndDate" name="policyEndDate" type="text" maxlength="50" [DateT]="''" readonly placeholder="Enter Policy End Date" >
+                <label class="active light-green-text text-darken-2">Policy End Date</label>
+            </div>
+
+            <div class="input-field ">
+                <input [(ngModel)]="IN.MotorIn.otherDetail" name="otherDetail" type="text" maxlength="50" placeholder="Enter Other Detail" >
+                <label class="active light-green-text text-darken-2">Other Detail</label>
+            </div>
+
+        </div>
+    </div>
+</main>
+<footer class="page-footer white">
+    <div class="">
+        <div class="row">
+            <div class="col m6 offset-m3 s12 l4 offset-l4 light-green darken-2">
+                <button class="waves-effect waves-teal white-text btn-flat btn-block" type="submit">Save</button>
+            </div>
+        </div>
+    </div>
+</footer>
+</form>
